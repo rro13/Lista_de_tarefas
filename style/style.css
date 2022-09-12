@@ -1,0 +1,102 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Rubik:wght@400;700&display=swap');
+
+body {
+    font-family: 'Lato', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    width: 300px;
+    margin: 0 550px;
+}
+
+header img {
+    float: left;
+    /* Posição da imagem em relação ao texto */
+}
+
+header h1 {
+    position: relative;
+    top: 10px;
+    left: 10px;
+}
+
+nav {
+    width: 300px;
+    margin: 0 550px;
+    /* Margem no topo e no bot = 0 laterais 550px*/
+    padding: 20px 0;
+    /* Espaçamento interno topo e bot, dps laterais */
+    text-align: center;
+}
+
+nav a {
+    margin: 20px;
+    /* Todas margens = 20*/
+    color: #000;
+    text-decoration: none;
+    /* Retira o sublinha dos elementos da tag a */
+}
+
+main {
+    width: 750px;
+    margin: 40px 370px;
+}
+
+section {
+    width: 500px;
+    height: auto;
+    margin: 40px 100px;
+    padding: 20px;
+    background-color: #F6F6F9;
+    border-radius: 20px;
+}
+
+section h2 {
+    font-size: 19px;
+}
+
+#inputNovaTarefa {
+    font-family: 'Lato', sans-serif;
+    padding: 0 10px;
+    height: 40px;
+    width: 380px;
+    border-radius: 5px;
+    border: 1px solid #0CCBDE;
+    /* Definindo espessura da borda, cor sólida e cor */
+}
+
+#btnNovaTarefa {
+    height: 40px;
+    width: 40px;
+    border-radius: 20px;
+    border: none;
+    margin: 0 25px;
+    color: #fff;
+    background-color: #0CCBDE;
+}
+
+#btnNovaTarefa:hover {
+    transform: scale(1.1);
+    /* btnhover é um novo seletor e transform scale faz o botão aumentar 10% quando passa mouse */
+}
+
+#ListaDeTarefas ul {
+    margin: 0;
+    padding: 0;
+}
+
+#ListaDeTarefas li {
+    list-style: none;
+    padding: 20px 10px;
+    margin: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+}
+
+#ListaDeTarefas li:hover {
+    background-color: #0ccbde;
+    color: #FFFFFF;
+    /* seletor que muda a cor de fundo e do texto dos elementos da lista li */
+}
