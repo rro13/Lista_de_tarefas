@@ -24,16 +24,16 @@ function mostrarTarefas() {
         let novoItem = document.createElement('li');
         let texto = tarefas[i];
         // novoItem.innerText = texto;
-        novoItem.setAttribute("class","aberta")       
+        novoItem.setAttribute("class", "aberta")
         novoItem.innerHTML = texto + '<img class="btnDelete" width=20px height=20px src="imagens/lixeira-icone.png">'
         elementoUl.append(novoItem);
     }
-    
+
     // Conclui as tarefas
     let todosLi = document.getElementsByTagName("li");
     for (let item of todosLi) {
         // console.log(item)
-        item.addEventListener("dblclick",concluirTarefa)
+        item.addEventListener("dblclick", concluirTarefa)
     }
 
     // Deleta as tarefas
@@ -44,20 +44,20 @@ function mostrarTarefas() {
 }
 
 function concluirTarefa() {
-        if (this.classList.contains('concluida')) {
-            this.setAttribute("class","aberta")
-        } else if (this.classList.contains('aberta')) {
-            this.setAttribute("class","concluida")
-        } else {
-            this.setAttribute("class","concluida")
-        }
+    if (this.classList.contains('concluida')) {
+        this.setAttribute("class", "aberta")
+    } else if (this.classList.contains('aberta')) {
+        this.setAttribute("class", "concluida")
+    } else {
+        this.setAttribute("class", "concluida")
     }
+}
 
 function deletarTarefa() {
     var tarefaDeletada = this.parentNode.innerText;
     let index = tarefas.indexOf(tarefaDeletada)
     if (index > -1) {
         tarefas.splice(index, 1);
-      }
+    }
     mostrarTarefas()
 }
