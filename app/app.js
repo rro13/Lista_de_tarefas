@@ -42,7 +42,7 @@ function mostrarTarefas() {
         item.addEventListener("click", deletarTarefa)
     }
 }
-// 
+
 function concluirTarefa() {
     if (this.classList.contains('concluida')) {
         this.setAttribute("class", "aberta")
