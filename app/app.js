@@ -1,60 +1,63 @@
-var tarefa1 = "Ir ao supermercado";
-var tarefa2 = "Estudar programação";
-var tarefa3 = "Atualizar o LinkedIn";
+let inputNovaTarefa = document.getElementById("inputNovaTarefa");
+let btnNovaTarefa = document.getElementById("btnNovaTarefa");
+const elementoUl = $("ul");
+
 var tarefas = [];
 
-tarefas.push(tarefa1, tarefa2, tarefa3);
-var novaTarefa = "Regar plantas";
-// console.log(tarefas);
-// alert("Sua nova tarefa é" + novaTarefa);
-tarefas.push(novaTarefa);
+inputNovaTarefa.addEventListener("keypress", function (e) {
+    if (e.key === 'Enter') { addTarefa() }
+})
 
-function exibirTarefas(lista){
-    for(let i = 1; i < tarefas.length + 1; i++){
-        console.log("Minha tarefa " + i + " " + "é: " + tarefas[i-1])
-    };
+function addTarefa() {
+    let valor = inputNovaTarefa.value;
+    if (valor != '') {
+        tarefas.push(valor);
+        inputNovaTarefa.value = ''
+        mostrarTarefas()
+    }
 }
-// exibirTarefas(tarefas);
 
-function adicionarTarefas(tarefaNova, lista){
-    novaTarefa = tarefaNova;
-    console.log(novaTarefa);
-    lista.push(novaTarefa);
-    return exibirTarefas(tarefas);
-};
-// adicionarTarefas("Limpar o quintal", tarefas);
 
-const novaTarefaObj = {
-    id : 1,
-    titulo : "Calibrar pneu da bicicleta",
-    descricao : "Levar a bicicleta vermelha ao posto e calibrar o pneu traseiro com 32 psi",
-};
-
-var tarefasObj = [];
-tarefasObj.push(novaTarefaObj);
-
-function exibirTarefasObj(lista){
-    for(let i = 0; i < lista.length; i++){
-        console.log("Tarefa id: " + lista[i].id);
-        console.log("Titulo: " + lista[i].titulo);
-        console.log("Descrição: " + lista[i].descricao);
+function mostrarTarefas() {
+    elementoUl.empty()
+    for (let i = 0; i < tarefas.length; i++) {
+        let novoItem = document.createElement('li');
+        let texto = tarefas[i];
+        // novoItem.innerText = texto;
+        novoItem.setAttribute("class","aberta")       
+        novoItem.innerHTML = texto + '<img class="btnDelete" width=20px height=20px src="imagens/lixeira-icone.png">'
+        elementoUl.append(novoItem);
     }
-};
-
-// exibirTarefasObj(tarefas1)
-
-function adicionarTarefas1(tituloTarefa, descricaoTarefa){
-    const novaTarefaObj = {
-        id: tarefasObj.length + 1,
-        titulo: tituloTarefa,
-        descricao: descricaoTarefa
+    
+    // Conclui as tarefas
+    let todosLi = document.getElementsByTagName("li");
+    for (let item of todosLi) {
+        // console.log(item)
+        item.addEventListener("dblclick",concluirTarefa)
     }
-    return tarefasObj.push(novaTarefaObj)
-};
 
-adicionarTarefas1("caminhar","fazer exercicio");
+    // Deleta as tarefas
+    let todosBtnDelete = document.getElementsByClassName("btnDelete")
+    for (let item of todosBtnDelete) {
+        item.addEventListener("click", deletarTarefa)
+    }
+}
 
-exibirTarefasObj(tarefasObj);
+function concluirTarefa() {
+        if (this.classList.contains('concluida')) {
+            this.setAttribute("class","aberta")
+        } else if (this.classList.contains('aberta')) {
+            this.setAttribute("class","concluida")
+        } else {
+            this.setAttribute("class","concluida")
+        }
+    }
 
-
-
+function deletarTarefa() {
+    var tarefaDeletada = this.parentNode.innerText;
+    let index = tarefas.indexOf(tarefaDeletada)
+    if (index > -1) {
+        tarefas.splice(index, 1);
+      }
+    mostrarTarefas()
+}
