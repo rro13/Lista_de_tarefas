@@ -93,10 +93,24 @@ section h2 {
     margin: 20px;
     background-color: #fff;
     border-radius: 10px;
+    position: relative;
 }
+
+.aberta{
+    text-decoration: none;
+  }
+  
+  .concluida{
+      text-decoration: line-through;
+  }
 
 #ListaDeTarefas li:hover {
     background-color: #0ccbde;
     color: #FFFFFF;
     /* seletor que muda a cor de fundo e do texto dos elementos da lista li */
+}
+
+.btnDelete {
+    position: absolute;
+    right: 5%;
 }
