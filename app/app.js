@@ -20,11 +20,11 @@ function addTarefa() {
 
 function mostrarTarefas() {
     elementoUl.empty()
-    for (let i = 0; i < tarefas.length; i++) {
+    for (let i of tarefas) {
         let novoItem = document.createElement('li');
-        let texto = tarefas[i];
+        let texto = i;
         // novoItem.innerText = texto;
-        novoItem.setAttribute("class", "aberta")
+        // novoItem.setAttribute("class", "aberta")
         novoItem.innerHTML = texto + '<img class="btnDelete" width=20px height=20px src="imagens/lixeira-icone.png">'
         elementoUl.append(novoItem);
     }
