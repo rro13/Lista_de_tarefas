@@ -98,6 +98,7 @@ section h2 {
     background-color: #fff;
     border-radius: 10px;
     position: relative;
+    word-wrap: break-word;
 }
 
 .aberta{

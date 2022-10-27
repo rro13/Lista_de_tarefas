@@ -12,14 +12,20 @@ function addTarefa() {
     let valor = inputNovaTarefa.value;
     if (valor != '') {
         tarefas.push(valor);
-        inputNovaTarefa.value = ''
-        mostrarTarefas()
+        inputNovaTarefa.value = '';
+        mostrarTarefas();
+        localStorage.setItem('tarefas', tarefas);
     }
 }
 
 
 function mostrarTarefas() {
-    elementoUl.empty()
+    elementoUl.empty();
+    let tarefasSalvas = localStorage.getItem('tarefas')
+    if((tarefas.length == 0) &&(tarefasSalvas !== null)) {
+        tarefas = tarefasSalvas.split(',');
+    }
+
     for (let i of tarefas) {
         let novoItem = document.createElement('li');
         let texto = i;
@@ -61,3 +67,5 @@ function deletarTarefa() {
     }
     mostrarTarefas()
 }
+
+mostrarTarefas()
